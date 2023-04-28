@@ -1,0 +1,107 @@
+.login-main {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-quaternary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-main .login-head {
+  margin-bottom: 3%;
+}
+.login-main .login__heading {
+  font-size: var(--F40);
+  font-weight: 600;
+  color: var(--bg-primary);
+}
+.login-main .login-card {
+  width: clamp(500px, 50%, 900px);
+  height: auto;
+  background-color: var(--bgWhite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-main .login-card .login-card-left {
+  width: 40%;
+  height: auto;
+}
+.login-main .login-card .login-card-left .login-student__image {
+  width: 100%;
+  height: auto;
+}
+.login-main .login-card .login-card-left .login-student__image img {
+  object-fit: cover;
+}
+.login-main .login-card .login-card-right {
+  width: 60%;
+  height: 100%;
+}
+.login-main .login-card .login-card-right .login-content {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-main .login-card .login-card-right .login-content form {
+  width: 100%;
+}
+.login-main
+  .login-card
+  .login-card-right
+  .login-content
+  .login-content__heading {
+  font-size: var(--F40);
+  color: var(--bg-secondary);
+  margin-bottom: 5%;
+}
+.login-main .login-card .login-card-right .login-content .login-formcontrol {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.login-main
+  .login-card
+  .login-card-right
+  .login-content
+  .login-formcontrol
+  label {
+  font-size: var(--F16);
+  color: var(--bg-secondary);
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 400;
+}
+
+.login-main
+  .login-card
+  .login-card-right
+  .login-content
+  .login-formcontrol
+  input,
+.login-main
+  .login-card
+  .login-card-right
+  .login-content
+  .login-formcontrol
+  select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cdcdcd;
+  /* border-radius: 5px; */
+  outline: none;
+}
+.login-actions {
+  width: 100%;
+  text-align: center;
+  margin: 10% 0 0 0;
+  display: block;
+}
+.login__error {
+  font-size: var(--F10);
+  color: tomato;
+}

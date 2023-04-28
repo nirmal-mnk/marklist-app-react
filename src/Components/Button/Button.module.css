@@ -1,0 +1,8 @@
+.loginbtn {
+  padding: 10px 100px;
+  font-size: var(--F20);
+  color: var(--bgWhite);
+  background-color: var(--bg-primary);
+  border: none;
+  cursor: pointer;
+}
