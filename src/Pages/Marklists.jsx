@@ -1,4 +1,10 @@
+import CardHeader from "../Components/CardHeader/CardHeader";
+
 function Marklist() {
-  return <div>Marklist</div>;
+  return (
+    <>
+      <CardHeader title="Student Marks" />
+    </>
+  );
 }
 export default Marklist;
