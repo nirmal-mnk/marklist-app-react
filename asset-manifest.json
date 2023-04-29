@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/recipeapp-react/static/css/main.5ca7e999.css",
-    "main.js": "/recipeapp-react/static/js/main.dc492242.js",
-    "static/js/787.7ab8a034.chunk.js": "/recipeapp-react/static/js/787.7ab8a034.chunk.js",
-    "index.html": "/recipeapp-react/index.html",
-    "main.5ca7e999.css.map": "/recipeapp-react/static/css/main.5ca7e999.css.map",
-    "main.dc492242.js.map": "/recipeapp-react/static/js/main.dc492242.js.map",
-    "787.7ab8a034.chunk.js.map": "/recipeapp-react/static/js/787.7ab8a034.chunk.js.map"
+    "main.css": "/marklist-app-react/static/css/main.5ca7e999.css",
+    "main.js": "/marklist-app-react/static/js/main.d0d5e0dc.js",
+    "static/js/787.7ab8a034.chunk.js": "/marklist-app-react/static/js/787.7ab8a034.chunk.js",
+    "index.html": "/marklist-app-react/index.html",
+    "main.5ca7e999.css.map": "/marklist-app-react/static/css/main.5ca7e999.css.map",
+    "main.d0d5e0dc.js.map": "/marklist-app-react/static/js/main.d0d5e0dc.js.map",
+    "787.7ab8a034.chunk.js.map": "/marklist-app-react/static/js/787.7ab8a034.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ca7e999.css",
-    "static/js/main.dc492242.js"
+    "static/js/main.d0d5e0dc.js"
   ]
 }
