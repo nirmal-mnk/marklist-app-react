@@ -6,3 +6,17 @@
   border: none;
   cursor: pointer;
 }
+.routingbtn {
+  padding: 8px 20px;
+  font-size: var(--F16);
+  color: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 0 10px;
+}
+.routingbtn:hover {
+  color: var(--bgWhite);
+  background-color: var(--bg-secondary);
+}

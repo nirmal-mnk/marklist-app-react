@@ -75,7 +75,7 @@ function Login() {
                   }
                 />
                 <div className="login-actions">
-                  <Button type="submit" label="Login" />
+                  <Button type="submit" label="Login" btnstyle="loginbtn" />
                 </div>
               </form>
             </div>
@@ -121,7 +121,7 @@ function Login() {
                   }
                 />
                 <div className="login-actions">
-                  <Button type="submit" label="Login" />
+                  <Button type="submit" label="Login" btnstyle="loginbtn" />
                 </div>
               </form>
             </div>
