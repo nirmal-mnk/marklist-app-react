@@ -156,3 +156,55 @@
   font-size: var(--F20);
   color: var(--bg-secondary);
 }
+/* Table */
+.marklist-table table {
+  width: 100%;
+  height: auto;
+  margin-top: 2%;
+  border-collapse: collapse;
+}
+.marklist-table table thead tr th,
+.marklist-table table tbody tr td {
+  font-size: var(--F16);
+  font-weight: 500;
+  color: var(--bg-primary);
+  text-align: center;
+}
+.marklist-table table thead tr th:first-child,
+.marklist-table table tbody tr td:first-child {
+  text-align: left;
+}
+.marklist-table table thead tr th {
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  color: var(--bgWhite);
+}
+.marklist-table table tbody tr td {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.marklist-table table tbody tr:hover {
+  background-color: var(--bg-quaternary);
+}
+.marklist-table .table-student .table-student-sub {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.marklist-table .table-student .table-student-sub .student__profilepic {
+  width: 45px;
+  height: auto;
+}
+.marklist-table .table-student .table-student-sub .student__det {
+  margin-left: 2%;
+}
+.marklist-table .table-student .table-student-sub .student__det h5 {
+  font-size: var(--F16);
+  color: var(--bg-primary);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.marklist-table .table-student .table-student-sub .student__det p {
+  font-size: var(--F14);
+  color: var(--bg-secondary);
+}
