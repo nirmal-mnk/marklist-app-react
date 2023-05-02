@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="marklist" element={<Marklist />} />
+            <Route path="marklist" element={<Marklist itemsPerPage={8} />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
