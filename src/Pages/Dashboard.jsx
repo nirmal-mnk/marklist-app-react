@@ -9,7 +9,10 @@ function Dashboard() {
         {overview.map((data, index) => (
           <div className="overview-sub" key={index}>
             <div className="overview__image">
-              <img src={`assets/emoji${index + 1}.png`} alt="Overview image" />
+              <img
+                src={require(`../assets/emoji${index + 1}.png`)}
+                alt="Overview image"
+              />
             </div>
             <div className="overview-des">
               <h1>30</h1>

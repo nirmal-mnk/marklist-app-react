@@ -38,7 +38,10 @@ function Login() {
         <div className="login-card">
           <div className="login-card-left">
             <div className="login-student__image">
-              <img src="/assets/login-students.jpg" alt="Students Image" />
+              <img
+                src={require("../assets/login-students.jpg")}
+                alt="Students Image"
+              />
             </div>
           </div>
           <div className="login-card-right">
@@ -85,7 +88,10 @@ function Login() {
         <div className="login-card">
           <div className="login-card-left">
             <div className="login-student__image">
-              <img src="/assets/login-admin.jpg" alt="Admin Image" />
+              <img
+                src={require("../assets/login-admin.jpg")}
+                alt="Admin Image"
+              />
             </div>
           </div>
           <div className="login-card-right">
