@@ -5,86 +5,27 @@ import { getAllStudents } from "../Features/Actions/ActionCreator";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
 import StudentProfile from "./StudentProfile";
-
-function Items({ currentItems }) {
-  return (
-    <>
-      <div className="marklist-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Student</th>
-              <th>Total</th>
-              <th>Average</th>
-              <th>Grade</th>
-              <th>Email</th>
-              <th>Ph Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((student, index) => (
-              <tr key={index}>
-                <td className="table-student">
-                  <div className="table-student-sub">
-                    <div className="student__profilepic">
-                      {student.gender === "Male" ? (
-                        <img
-                          src={require("../assets/male-profile.png")}
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          src={require("../assets/female-profile.png")}
-                          alt=""
-                        />
-                      )}
-                    </div>
-                    <div className="student__det">
-                      <h5>{student.name}</h5>
-                      <p> Id: {student.id}</p>
-                    </div>
-                  </div>
-                </td>
-                <td>{student.total}</td>
-                <td>{student.average}</td>
-                <td>
-                  {student.grade === "Excellent" ? (
-                    <div className="grade excellent">
-                      <p>{student.grade}</p>
-                    </div>
-                  ) : student.grade === "Very Good" ? (
-                    <div className="grade verygood">
-                      <p>{student.grade}</p>
-                    </div>
-                  ) : student.grade === "Good" ? (
-                    <div className="grade good">
-                      <p>{student.grade}</p>
-                    </div>
-                  ) : student.grade === "Ok" ? (
-                    <div className="grade ok">
-                      <p>{student.grade}</p>
-                    </div>
-                  ) : (
-                    <div className="grade fairfail">
-                      <p>{student.grade}</p>
-                    </div>
-                  )}
-                </td>
-                <td>{student.email !== null ? student.email : "-"}</td>
-                <td>{student.phone !== null ? student.phone : "-"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
-  );
-}
+import TableItems from "../Components/TableItems/TableItems";
 
 function Marklist({ itemsPerPage }) {
   const dispatch = useDispatch();
+  const [students, setStudents] = useState([]);
   const state = useSelector((state) => state.allStudentsState.allStudents);
-  console.log(state);
+  const profileModal = useSelector(
+    (state) => state.profileModalState.toggleProfileModal
+  );
+  const getStudentData = useSelector(
+    (state) => state.profileModalState.studentData
+  );
+  const searchedStudentData = useSelector(
+    (state) => state.searchNameState.searchedStudent
+  );
+  useEffect(() => {
+    setStudents(state);
+  }, [state]);
+  useEffect(() => {
+    setStudents(searchedStudentData);
+  }, [searchedStudentData]);
 
   useEffect(() => {
     dispatch(getAllStudents());
@@ -92,18 +33,18 @@ function Marklist({ itemsPerPage }) {
 
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = state.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(state.length / itemsPerPage);
+  const currentItems = students.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(students.length / itemsPerPage);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % state.length;
+    const newOffset = (event.selected * itemsPerPage) % students.length;
     setItemOffset(newOffset);
   };
 
   return (
     <>
       <CardHeader title="Student Marks" />
-      <Items currentItems={currentItems} />
+      <TableItems currentItems={currentItems} />
       <ReactPaginate
         breakLabel="..."
         nextLabel="Next"
@@ -114,7 +55,7 @@ function Marklist({ itemsPerPage }) {
         renderOnZeroPageCount={null}
         className="pagination-btns"
       />
-      <StudentProfile />
+      {profileModal && <StudentProfile studentProfile={getStudentData} />}
     </>
   );
 }

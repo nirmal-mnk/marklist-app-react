@@ -11,6 +11,7 @@ import Login from "./Pages/Login";
 import Error404 from "./Pages/Error404";
 import Dashboard from "./Pages/Dashboard";
 import Marklist from "./Pages/Marklists";
+import AddStudent from "./Pages/AddStudent";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route index element={<Navigate to="/dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="marklist" element={<Marklist itemsPerPage={8} />} />
+            <Route path="add-student" element={<AddStudent />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>

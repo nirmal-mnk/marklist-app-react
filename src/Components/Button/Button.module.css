@@ -20,3 +20,18 @@
   color: var(--bgWhite);
   background-color: var(--bg-secondary);
 }
+.fillbtn {
+  padding: 8px 20px;
+  font-size: var(--F16);
+  color: var(--bgWhite);
+  border: 1px solid var(--bg-secondary);
+  background-color: var(--bg-secondary);
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 0 10px;
+}
+.fillbtn:hover {
+  border: 1px solid var(--bg-primary);
+  color: var(--bgWhite);
+  background-color: var(--bg-primary);
+}
