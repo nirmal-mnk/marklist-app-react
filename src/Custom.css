@@ -59,17 +59,12 @@
   color: var(--bg-secondary);
   margin-bottom: 5%;
 }
-.login-main .login-card .login-card-right .login-content .login-formcontrol {
+.login-formcontrol {
   width: 100%;
   margin: 1rem 0;
 }
 
-.login-main
-  .login-card
-  .login-card-right
-  .login-content
-  .login-formcontrol
-  label {
+.login-formcontrol label {
   font-size: var(--F16);
   color: var(--bg-secondary);
   margin-bottom: 10px;
@@ -77,18 +72,9 @@
   font-weight: 400;
 }
 
-.login-main
-  .login-card
-  .login-card-right
-  .login-content
-  .login-formcontrol
-  input,
-.login-main
-  .login-card
-  .login-card-right
-  .login-content
-  .login-formcontrol
-  select {
+.login-formcontrol input,
+.login-formcontrol select,
+.login-formcontrol textarea {
   width: 100%;
   padding: 8px;
   border: 1px solid #cdcdcd;
@@ -156,6 +142,21 @@
 .dashboard-overview .overview-sub .overview-des h4 {
   font-size: var(--F20);
   color: var(--bg-secondary);
+}
+.overview-charts {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.overview-charts .overview-chart-left {
+  width: 50%;
+  height: auto;
+}
+.overview-charts .overview-chart-right {
+  width: 50%;
+  height: 50%;
 }
 /* Table */
 .marklist-table table {
@@ -307,6 +308,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+.student-profile-overlay .student-profile-card .modal__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 3%;
+  right: 2%;
 }
 .student-profile-overlay .student-profile-card .profile-card-left {
   width: 40%;
@@ -429,4 +439,109 @@
   tr
   :first-child {
   color: var(--bg-secondary);
+}
+/* Add Student */
+.add-student-main {
+  width: 100%;
+  height: auto;
+  margin-top: 2%;
+  position: relative;
+}
+.add-student-main .student-detail {
+  width: 100%;
+}
+.add-student-main .student-detail .student__heading {
+  font-size: var(--F20);
+  color: var(--bg-secondary);
+  margin-top: 1%;
+}
+.add-student-main .student-detail .student-form-control {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.add-student-main .student-detail .student-form-control .student-form-input {
+  width: 25%;
+  margin: 0 2%;
+}
+.add-student-main .addstudent-actions {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+}
+/* Summary Modal */
+.summary-modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.562);
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-modal-overlay .summary-modal-card {
+  width: clamp(500px, 50vw, 700px);
+  height: auto;
+  background-color: var(--bgWhite);
+  padding: 2rem;
+
+  position: relative;
+}
+.summary-modal-overlay .summary-modal-card .summary-modal__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 3%;
+  right: 2%;
+}
+.summary-modal-overlay .summary-modal-card .summary-des {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+}
+.summary-modal-overlay .summary-modal-card .summary-des .summary-des-sub {
+  text-align: center;
+  color: var(--bg-primary);
+}
+.summary-modal-overlay .summary-modal-card .summary-des .summary-des-sub h3 {
+  color: var(--bg-primary);
+}
+.summary-modal-overlay .summary-modal-card .summary-des .summary-des-sub h1 {
+  color: var(--bg-primary);
+}
+.summary-modal-overlay
+  .summary-modal-card
+  .summary-success
+  .summary-success__img {
+  width: 50%;
+  height: 180px;
+  margin: 0 auto;
+  overflow: hidden;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.summary-modal-overlay
+  .summary-modal-card
+  .summary-success
+  .summary-success__img
+  img {
+  vertical-align: middle;
+}
+.summary-modal-overlay .summary-modal-card .summary-success h2 {
+  text-align: center;
+  font-size: var(--F40);
+  color: #6cd038;
+  margin-bottom: 3%;
 }

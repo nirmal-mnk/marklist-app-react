@@ -9,4 +9,37 @@
   color: var(--bg-primary);
 }
 .cardright {
+  position: relative;
+}
+
+.searchStudent {
+  width: 300px;
+  padding: 10px 10px 10px 30px;
+  font-size: var(--F16);
+  font-weight: 500;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  position: relative;
+  background: none;
+}
+.cardright::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../../assets/search_Icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+}
+.searchErr {
+  font-size: var(--F10);
+  color: tomato;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
 }
