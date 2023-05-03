@@ -4,7 +4,7 @@ import Button from "../Components/Button/Button";
 
 function Layout() {
   const gotoAddPage = () => {
-    console.log("hakjsdhalkjsdh");
+    console.log("lsjdfohosofdsh");
   };
   return (
     <div>
