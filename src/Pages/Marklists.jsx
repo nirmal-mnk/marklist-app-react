@@ -6,10 +6,16 @@ import ReactPaginate from "react-paginate";
 import { useState } from "react";
 import StudentProfile from "./StudentProfile";
 import TableItems from "../Components/TableItems/TableItems";
+import { useLocation } from "react-router-dom";
 
 function Marklist({ itemsPerPage }) {
   const dispatch = useDispatch();
+  const location = useLocation();
+  console.log(location.forcepage);
+
+  const approle = useSelector((state) => state.roleState.role);
   const [students, setStudents] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const state = useSelector((state) => state.allStudentsState.allStudents);
   const profileModal = useSelector(
     (state) => state.profileModalState.toggleProfileModal
@@ -30,6 +36,13 @@ function Marklist({ itemsPerPage }) {
   useEffect(() => {
     dispatch(getAllStudents());
   }, []);
+  useEffect(() => {
+    if (location.forcepage) {
+      setCurrentPage(41);
+    } else {
+      setCurrentPage(0);
+    }
+  }, [location.forcepage]);
 
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
@@ -44,7 +57,7 @@ function Marklist({ itemsPerPage }) {
   return (
     <>
       <CardHeader title="Student Marks" />
-      <TableItems currentItems={currentItems} />
+      <TableItems currentItems={currentItems} approle={approle} />
       <ReactPaginate
         breakLabel="..."
         nextLabel="Next"
@@ -52,6 +65,7 @@ function Marklist({ itemsPerPage }) {
         pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel="Previous"
+        forcePage={currentPage}
         renderOnZeroPageCount={null}
         className="pagination-btns"
       />

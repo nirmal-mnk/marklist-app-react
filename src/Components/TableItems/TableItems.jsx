@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { OPEN_PROFILE_MODAL } from "../../Features/Reducers/ProfileReducer";
+import { OPEN_PROFILE_MODAL } from "../../Features/Actions/ActionType";
 import { useEffect } from "react";
-function TableItems({ currentItems }) {
+import { deleteStudent } from "../../Features/Actions/ActionCreator";
+import { useNavigate } from "react-router-dom";
+function TableItems({ currentItems, approle }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const openProfileModal = (student) => {
-    console.log(student);
     dispatch({ type: OPEN_PROFILE_MODAL, value: student });
   };
   const tableError = useSelector((state) => state.allStudentsState.error);
@@ -12,6 +14,12 @@ function TableItems({ currentItems }) {
     (state) => state.allStudentsState.loading
   );
 
+  const handleStudentEdit = (student) => {
+    navigate("/add-student", { state: student });
+  };
+  const handleStudentDelete = (student) => {
+    dispatch(deleteStudent(student));
+  };
   return (
     <>
       <div className="marklist-table">
@@ -24,14 +32,23 @@ function TableItems({ currentItems }) {
               <th>Total</th>
               <th>Average</th>
               <th>Grade</th>
+              {approle === "admin" && (
+                <>
+                  <th></th>
+                  <th></th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody>
             {!tableDataLoading ? (
               !tableError ? (
                 currentItems.map((student, index) => (
-                  <tr key={index} onClick={() => openProfileModal(student)}>
-                    <td className="table-student">
+                  <tr key={index}>
+                    <td
+                      className="table-student"
+                      onClick={() => openProfileModal(student)}
+                    >
                       <div className="table-student-sub">
                         <div className="student__profilepic">
                           {student.gender === "Male" ? (
@@ -52,11 +69,19 @@ function TableItems({ currentItems }) {
                         </div>
                       </div>
                     </td>
-                    <td>{student.email !== null ? student.email : "-"}</td>
-                    <td>{student.phone !== null ? student.phone : "-"}</td>
-                    <td>{student.total}</td>
-                    <td>{student.average}</td>
-                    <td>
+                    <td onClick={() => openProfileModal(student)}>
+                      {student.email !== null ? student.email : "-"}
+                    </td>
+                    <td onClick={() => openProfileModal(student)}>
+                      {student.phone !== null ? student.phone : "-"}
+                    </td>
+                    <td onClick={() => openProfileModal(student)}>
+                      {student.total}
+                    </td>
+                    <td onClick={() => openProfileModal(student)}>
+                      {student.average}
+                    </td>
+                    <td onClick={() => openProfileModal(student)}>
                       {student.grade === "Excellent" ? (
                         <div className="grade excellent">
                           <p>{student.grade}</p>
@@ -79,6 +104,34 @@ function TableItems({ currentItems }) {
                         </div>
                       )}
                     </td>
+                    {approle === "admin" && (
+                      <>
+                        <td>
+                          <button
+                            type="button"
+                            className="iconbtn"
+                            onClick={() => handleStudentEdit(student)}
+                          >
+                            <img
+                              src={require("../../assets/edit_icon.png")}
+                              alt="Edit Icon"
+                            />
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            type="button"
+                            className="iconbtn"
+                            onClick={() => handleStudentDelete(student)}
+                          >
+                            <img
+                              src={require("../../assets/delete_icon.png")}
+                              alt="Delete Icon"
+                            />
+                          </button>
+                        </td>
+                      </>
+                    )}
                   </tr>
                 ))
               ) : (

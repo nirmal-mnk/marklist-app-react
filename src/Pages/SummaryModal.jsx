@@ -1,10 +1,18 @@
 import ReactDOM from "react-dom";
+import { useDispatch } from "react-redux";
+import { CLOSE_SUCCESS_MODAL } from "../Features/Actions/ActionType";
 
-function SummaryModal() {
+function SummaryModal({ studentResult }) {
+  const dispatch = useDispatch();
+
   return ReactDOM.createPortal(
     <div className="summary-modal-overlay">
       <div className="summary-modal-card">
-        <button type="button" className="summary-modal__close">
+        <button
+          type="button"
+          className="summary-modal__close"
+          onClick={() => dispatch({ type: CLOSE_SUCCESS_MODAL })}
+        >
           <img src={require("../assets/close_icon.png")} alt="Close Icon" />
         </button>
         <div className="summary-success">
@@ -16,15 +24,15 @@ function SummaryModal() {
         <div className="summary-des">
           <div className="summary-des-sub">
             <h3>Total</h3>
-            <h1>498</h1>
+            <h1>{studentResult.total}</h1>
           </div>
           <div className="summary-des-sub">
             <h3>Average</h3>
-            <h1>98%</h1>
+            <h1>{studentResult.average}%</h1>
           </div>
           <div className="summary-des-sub">
             <h3>Grade</h3>
-            <h1>Excellent</h1>
+            <h1>{studentResult.grade}</h1>
           </div>
         </div>
       </div>

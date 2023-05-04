@@ -3,10 +3,14 @@ import { useState } from "react";
 import Button from "../Components/Button/Button";
 import Input from "../Components/Input/Input";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { APP_ROLE } from "../Features/Reducers/loginReducer";
 
 function Login() {
   const [role, setRole] = useState("student");
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const standardOptions = [
     { value: 4, label: "4th Standard" },
     { value: 5, label: "5th Standard" },
@@ -17,10 +21,18 @@ function Login() {
     { value: 10, label: "10th Standard" },
   ];
   const studentForm = useForm({
-    defaultValues: { studentname: "Nirmal", studentstandard: 10 },
+    defaultValues: {
+      studentname: "Nirmal",
+      studentpassword: "Nirmal123",
+      role: "student",
+    },
   });
   const adminForm = useForm({
-    defaultValues: { adminname: "Maharaja", adminpassword: "Maharaja00" },
+    defaultValues: {
+      adminname: "Maharaja",
+      adminpassword: "Maharaja00",
+      role: "admin",
+    },
   });
   const getRole = (data) => {
     setRole(data);
@@ -49,7 +61,14 @@ function Login() {
               <h3 className="login-content__heading">Welcome Back!</h3>
               <form
                 onSubmit={studentForm.handleSubmit((data) => {
-                  console.log(data);
+                  if (
+                    data.studentname === "Nirmal" &&
+                    data.studentpassword === "Nirmal123"
+                  ) {
+                    sessionStorage.setItem("approle", "student");
+                    navigate("/dashboard");
+                    dispatch({ type: APP_ROLE, role: "student" });
+                  }
                 })}
               >
                 <Input
@@ -57,7 +76,7 @@ function Login() {
                   label="Name"
                   id="studentname"
                   registerHandle={studentForm.register("studentname", {
-                    required: "please enter the studentname",
+                    required: "please enter the Name",
                   })}
                   error={
                     studentForm.formState.errors?.studentname &&
@@ -65,16 +84,15 @@ function Login() {
                   }
                 />
                 <Input
-                  type="select"
-                  label="Standard"
-                  id="studentstandard"
-                  options={standardOptions}
-                  registerHandle={studentForm.register("studentstandard", {
-                    required: "please enter the studentstandard",
+                  type="password"
+                  label="Password"
+                  id="studentpassword"
+                  registerHandle={studentForm.register("studentpassword", {
+                    required: "please enter the Password",
                   })}
                   error={
-                    studentForm.formState.errors?.studentstandard &&
-                    studentForm.formState.errors.studentstandard.message
+                    studentForm.formState.errors?.studentpassword &&
+                    studentForm.formState.errors.studentpassword.message
                   }
                 />
                 <div className="login-actions">
@@ -99,7 +117,14 @@ function Login() {
               <h3 className="login-content__heading">Welcome Back!</h3>
               <form
                 onSubmit={adminForm.handleSubmit((data) => {
-                  console.log(data);
+                  if (
+                    data.adminname === "Maharaja" &&
+                    data.adminpassword === "Maharaja00"
+                  ) {
+                    dispatch({ type: APP_ROLE, role: "admin" });
+                    sessionStorage.setItem("approle", "admin");
+                    navigate("/dashboard");
+                  }
                 })}
               >
                 <Input

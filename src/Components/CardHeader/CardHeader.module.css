@@ -43,3 +43,11 @@
   bottom: -15px;
   left: 0;
 }
+.addStudentAction {
+  text-align: right;
+}
+.cardHeaderLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

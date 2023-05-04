@@ -64,7 +64,6 @@ export const getOverviewData = () => {
         `http://api-task.devdews.com/student/overview`
       );
       const data = res.data;
-      console.log(data);
       dispatch({
         type: actionType.OVERVIEW_SUCCESS,
         value: data,
@@ -74,6 +73,62 @@ export const getOverviewData = () => {
         type: actionType.OVERVIEW_FAIL,
         value: err.message,
       });
+    }
+  };
+};
+
+export const addNewStudent = (payload) => {
+  return async (dispatch) => {
+    dispatch({ type: actionType.ADD_STUDENTS_PENDING });
+    try {
+      const res = await axios.post(
+        `http://api-task.devdews.com/student/create`,
+        payload
+      );
+      const data = res.data;
+      dispatch({
+        type: actionType.ADD_STUDENTS_SUCCESS,
+        value: payload,
+      });
+    } catch (err) {
+      dispatch({ type: actionType.ADD_STUDENTS_FAIL, value: err.message });
+    }
+  };
+};
+export const updateStudent = (payload, student) => {
+  return async (dispatch) => {
+    dispatch({ type: actionType.UPDATE_STUDENTS_PENDING });
+    try {
+      const res = await axios.put(
+        `http://api-task.devdews.com/student/update/${student.id}`,
+        payload
+      );
+      const data = res.data;
+      dispatch({
+        type: actionType.UPDATE_STUDENTS_SUCCESS,
+        value: payload,
+      });
+    } catch (err) {
+      dispatch({ type: actionType.UPDATE_STUDENTS_FAIL, value: err.message });
+    }
+  };
+};
+
+export const deleteStudent = (payload) => {
+  return async (dispatch) => {
+    dispatch({ type: actionType.DELETE_STUDENTS_PENDING });
+    try {
+      const res = await axios.get(
+        `http://api-task.devdews.com/student/delete/${payload.id}`
+      );
+
+      const data = res.data;
+      dispatch({
+        type: actionType.DELETE_STUDENTS_SUCCESS,
+        value: payload,
+      });
+    } catch (err) {
+      dispatch({ type: actionType.DELETE_STUDENTS_FAIL, value: err.message });
     }
   };
 };
