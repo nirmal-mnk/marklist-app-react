@@ -3,14 +3,11 @@ import { Outlet } from "react-router-dom";
 import Button from "../Components/Button/Button";
 
 function Layout() {
-  const gotoAddPage = () => {
-    console.log("hjghjg");
-  };
   return (
     <div>
       <Header />
       <div className="dashboard-main">
-        <div className="routing-btn-grp">
+        {/* <div className="routing-btn-grp">
           <Button
             type="button"
             label="List All"
@@ -29,7 +26,7 @@ function Layout() {
             btnstyle="routingbtn"
             handleClick={gotoAddPage}
           />
-        </div>
+        </div> */}
         <div className="dashboard-sub">
           <Outlet />
         </div>

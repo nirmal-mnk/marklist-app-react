@@ -8,6 +8,13 @@ import {
   OVERVIEW_PENDING,
   OVERVIEW_SUCCESS,
   OVERVIEW_FAIL,
+  ADD_STUDENTS_PENDING,
+  ADD_STUDENTS_SUCCESS,
+  ADD_STUDENTS_FAIL,
+  UPDATE_STUDENTS_PENDING,
+  UPDATE_STUDENTS_SUCCESS,
+  UPDATE_STUDENTS_FAIL,
+  CHANGE_STUDENT,
 } from "../Actions/ActionType";
 
 export const marklistReducer = (
@@ -19,8 +26,6 @@ export const marklistReducer = (
       return { ...state, loading: true, error: "" };
     }
     case ALL_STUDENTS_SUCCESS: {
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -29,8 +34,6 @@ export const marklistReducer = (
       };
     }
     case ALL_STUDENTS_FAIL: {
-      console.log(action.value);
-
       return {
         ...state,
         loading: false,
@@ -73,8 +76,6 @@ export const overviewReducer = (
       return { ...state, loading: true, error: "" };
     }
     case OVERVIEW_SUCCESS: {
-      console.log(action.value);
-
       return {
         ...state,
         loading: false,
@@ -84,6 +85,86 @@ export const overviewReducer = (
     }
     case OVERVIEW_FAIL: {
       return { ...state, loading: false, error: action.value };
+    }
+    default:
+      return state;
+  }
+};
+
+export const addNewStudentReducer = (
+  state = { loading: false, error: "", studentadded: false, studentResult: [] },
+  action
+) => {
+  switch (action.type) {
+    case ADD_STUDENTS_PENDING: {
+      return { ...state, loading: true, error: "" };
+    }
+    case ADD_STUDENTS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        studentadded: true,
+        studentResult: action.value,
+      };
+    }
+    case ADD_STUDENTS_FAIL: {
+      return { ...state, loading: false, error: "" };
+    }
+    case CHANGE_STUDENT: {
+      return { ...state, studentadded: false };
+    }
+    default:
+      return state;
+  }
+};
+export const updateStudentReducer = (
+  state = {
+    loading: false,
+    error: "",
+    studentUpdated: false,
+    studentResult: [],
+  },
+  action
+) => {
+  switch (action.type) {
+    case UPDATE_STUDENTS_PENDING: {
+      return { ...state, loading: true, error: "" };
+    }
+    case UPDATE_STUDENTS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        studentUpdated: true,
+        studentResult: action.value,
+      };
+    }
+    case UPDATE_STUDENTS_FAIL: {
+      return { ...state, loading: false, error: "" };
+    }
+    default:
+      return state;
+  }
+};
+export const deleteStudentReducer = (
+  state = { loading: false, error: "", studentdeleted: false },
+  action
+) => {
+  switch (action.type) {
+    case ADD_STUDENTS_PENDING: {
+      return { ...state, loading: true, error: "" };
+    }
+    case ADD_STUDENTS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        studentdeleted: true,
+      };
+    }
+    case ADD_STUDENTS_FAIL: {
+      return { ...state, loading: false, error: "" };
     }
     default:
       return state;

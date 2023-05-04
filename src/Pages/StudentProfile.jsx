@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { useDispatch } from "react-redux";
-import { CLOSE_PROFILE_MODAL } from "../Features/Reducers/ProfileReducer";
+import { CLOSE_PROFILE_MODAL } from "../Features/Actions/ActionType";
 function StudentProfile({ studentProfile }) {
   const dispatch = useDispatch();
   return ReactDOM.createPortal(

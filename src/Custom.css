@@ -1,3 +1,8 @@
+.iconbtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .login-main {
   width: 100%;
   height: 100vh;
@@ -148,7 +153,7 @@
   height: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 .overview-charts .overview-chart-left {
   width: 50%;
@@ -156,7 +161,7 @@
 }
 .overview-charts .overview-chart-right {
   width: 50%;
-  height: 50%;
+  height: auto;
 }
 /* Table */
 .marklist-table table {
@@ -503,7 +508,8 @@
   right: 2%;
 }
 .summary-modal-overlay .summary-modal-card .summary-des {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -514,10 +520,13 @@
   color: var(--bg-primary);
 }
 .summary-modal-overlay .summary-modal-card .summary-des .summary-des-sub h3 {
-  color: var(--bg-primary);
+  color: var(--bg-secondary);
+  margin-bottom: 0.7rem;
+  font-size: var(--F20);
 }
 .summary-modal-overlay .summary-modal-card .summary-des .summary-des-sub h1 {
   color: var(--bg-primary);
+  font-size: var(--F40);
 }
 .summary-modal-overlay
   .summary-modal-card
@@ -544,4 +553,21 @@
   font-size: var(--F40);
   color: #6cd038;
   margin-bottom: 3%;
+}
+.error-page {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bgWhite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error-page .error__img {
+  width: 30vw;
+  height: auto;
 }
